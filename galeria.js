@@ -2,7 +2,7 @@ import * as THREE from '../resources/threejs/build/three.module.js';
 
 import { PointerLockControls } from '../resources/threejs/examples/jsm/controls/PointerLockControls.js';
 import { GLTFLoader } from '../resources/threejs/examples/jsm/loaders/GLTFLoader.js';
-// import {VRButton} from '../resources/threejs/examples/jsm/webxr/VRButton.js';
+import {VRButton} from '../resources/threejs/examples/jsm/webxr/VRButton.js';
 
 //Definição de variáveis globais 
 let camera, scene, renderer, controls,raycaster, position,boxGeometry;
@@ -10,6 +10,7 @@ let moveForward = false;
 let moveBackward = false;
 let moveLeft = false;
 let moveRight = false;
+let preCamera = false;
 
 let prevTime = performance.now();
 
@@ -75,9 +76,9 @@ function init() {
 	controls = new PointerLockControls( user, document.body );
 
 	const blocker = document.getElementById( 'blocker' );
-	const instructions = document.getElementById( 'instructions' );
+	const start = document.getElementById( 'enterBtn' );
 
-	instructions.addEventListener( 'click', function () {
+	start.addEventListener( 'click', function () {
 
 		controls.lock();
 
@@ -85,7 +86,7 @@ function init() {
 
 	controls.addEventListener( 'lock', function () {
 
-		instructions.style.display = 'none';
+		start.style.display = 'none';
 		blocker.style.display = 'none';
 
 	} );
@@ -93,7 +94,7 @@ function init() {
 	controls.addEventListener( 'unlock', function () {
 
 		blocker.style.display = 'block';
-		instructions.style.display = '';
+		start.style.display = '';
 
 	} );
 
@@ -180,8 +181,16 @@ function init() {
 
 	//VR
 	
-	// renderer.xr.enabled = true;
-	// document.body.appendChild(VRButton.createButton(renderer));
+	renderer.xr.enabled = true;
+	instructions.appendChild(VRButton.createButton(renderer));
+	renderer.xr.addEventListener( 'sessionstart', function ( event ) {
+		preCamera = true;
+	
+	} );
+	
+	renderer.xr.addEventListener( 'sessionend', function ( event ) {
+		preCamera = false;
+	} );
 
 	//Carrega as luzes
 	loadLight();
@@ -298,7 +307,8 @@ function animate() {
 
 	prevTime = time;
 
-	// updateCamera();
+	if(preCamera)
+		updateCamera();
 	renderer.render( scene, camera );
 	renderer.setAnimationLoop(animate);
 
@@ -317,20 +327,17 @@ function animateOrgans(organName, time, cycle){
 	}
 	
 	if((organName === 'heart')){
-		if(cycle%10==0)
-			obj.scale.set(1.5,1.5,1.5);
-		else if (cycle%87==0)
-			obj.scale.set(1.8,1.8,1.8);
+		let scl =   Math.abs(Math.sin(time*0.001))*0.3 + 1.5;
+
+		obj.scale.set(scl,scl,scl);
 	}
 	if(organName === 'skull'){
 		obj.rotateY( Math.PI *  0.005);
 	}
 	if(organName === 'eye'){
-		obj.position.y += Math.sin((time*0.001)%2*Math.PI)/30;
 		obj.lookAt( user.position );
 	}
 	if(organName === 'skeleton'){
-		obj.position.y += Math.sin((time*0.001)%2*Math.PI)/30;
 		obj.lookAt( user.position );
 	}
 }
