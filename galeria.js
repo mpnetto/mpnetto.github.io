@@ -251,7 +251,7 @@ function onWindowResize() {
 var cycle = 0;
 
 function animate() {
-	let organs = ['brain','skull','eye', 'heart','stomach','pelvic', 'lung','skull', 'heart', 'excretory','eye','skeleton','brain']
+	// let organs = ['brain','skull','eye', 'heart','stomach','pelvic', 'lung','skull', 'heart', 'excretory','eye','skeleton','brain']
 	cycle+=1;
 	
 
@@ -301,16 +301,16 @@ function animate() {
 	}
 
 	//Animação dos orgãos de acordo com o tipo do mesmo
-	organs.forEach(element => {
-		animateOrgans(element, time, cycle);
-	});
+	// organs.forEach(element => {
+	// 	animateOrgans(element, time, cycle);
+	// });
 
 	prevTime = time;
 
 	if(preCamera)
 		updateCamera();
 	renderer.render( scene, camera );
-	renderer.setAnimationLoop(animate);
+	// renderer.setAnimationLoop(animate);
 
 }
 
@@ -421,6 +421,7 @@ function buildWalls() {
 		[2, 0, 0, 0, 0, 0, 0, 0, 0, 2,],
 		[1, 1, 2, 1, 1, 1, 2, 1, 1, 1,],
 	 ];
+
 
 	var posX;
 	var posZ;
@@ -579,260 +580,260 @@ function loadObjects() {
 
 	// Load Mesh - Brain
 	const gltfLoader = new GLTFLoader(manager);
-	gltfLoader.load('../resources/Models/glTF/brain/scene.gltf', function(object){
-		let root = object.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true; }
-		} );
-		root.name = 'brain';
-		root.scale.set(0.02, 0.02, 0.02);
-		root.position.set(-35, 8.2, 0.0);
-		scene.add(root);
-	});
+	// gltfLoader.load('../resources/Models/glTF/brain/scene.gltf', function(object){
+	// 	let root = object.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true; }
+	// 	} );
+	// 	root.name = 'brain';
+	// 	root.scale.set(0.02, 0.02, 0.02);
+	// 	root.position.set(-35, 8.2, 0.0);
+	// 	scene.add(root);
+	// });
 
-	// Load Mesh - Eye
-	gltfLoader.load('../resources/Models/glTF/eye/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true; }
-		} );
-		root.name = 'eye';
-		root.scale.set(3, 3, 3);
-		root.position.set(28, 13.2, 0);
-		scene.add(root);
-	});
+	// // Load Mesh - Eye
+	// gltfLoader.load('../resources/Models/glTF/eye/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true; }
+	// 	} );
+	// 	root.name = 'eye';
+	// 	root.scale.set(3, 3, 3);
+	// 	root.position.set(28, 13.2, 0);
+	// 	scene.add(root);
+	// });
 	
-	// Load Mesh - Skeleton
-	gltfLoader.load('../resources/Models/glTF/skeleton/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true; }
-		} );
-		root.name = 'skeleton';
-		root.scale.set(0.08, 0.08, 0.08);
-		root.position.set(0, 5.1, -30);
-		scene.add(root);
-	});
+	// // Load Mesh - Skeleton
+	// gltfLoader.load('../resources/Models/glTF/skeleton/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true; }
+	// 	} );
+	// 	root.name = 'skeleton';
+	// 	root.scale.set(0.08, 0.08, 0.08);
+	// 	root.position.set(0, 5.1, -30);
+	// 	scene.add(root);
+	// });
 
 	
-	// Load Mesh - Excretory System
-	gltfLoader.load('../resources/Models/glTF/excretory_system/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true; }
-		} );
-		root.name = 'excretory';
-		root.scale.set(1, 1, 1);
-		root.position.set(-30, 17.0, 20);
-		scene.add(root);
-	});
+	// // Load Mesh - Excretory System
+	// gltfLoader.load('../resources/Models/glTF/excretory_system/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true; }
+	// 	} );
+	// 	root.name = 'excretory';
+	// 	root.scale.set(1, 1, 1);
+	// 	root.position.set(-30, 17.0, 20);
+	// 	scene.add(root);
+	// });
 
-	// Load Mesh - Heart
-	gltfLoader.load('../resources/Models/glTF/heart/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true; }
-		} );
-		root.name = 'heart';
-		root.scale.set(1.8, 1.8, 1.8);
-		root.position.set(-10, 10.0, 20);
-		scene.add(root);
-	});
+	// // Load Mesh - Heart
+	// gltfLoader.load('../resources/Models/glTF/heart/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true; }
+	// 	} );
+	// 	root.name = 'heart';
+	// 	root.scale.set(1.8, 1.8, 1.8);
+	// 	root.position.set(-10, 10.0, 20);
+	// 	scene.add(root);
+	// });
 	
-	// Load Mesh - Skull
-	gltfLoader.load('../resources/Models/glTF/skull/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true; }
-		} );
-		root.name = 'skull';
-		root.scale.set(3, 3, 3);
-		root.position.set(-20, 8.2, -30);
-		scene.add(root);
-	});
+	// // Load Mesh - Skull
+	// gltfLoader.load('../resources/Models/glTF/skull/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true; }
+	// 	} );
+	// 	root.name = 'skull';
+	// 	root.scale.set(3, 3, 3);
+	// 	root.position.set(-20, 8.2, -30);
+	// 	scene.add(root);
+	// });
 	
 
-	// Load Mesh - Lung
-	gltfLoader.load('../resources/Models/glTF/lung_model/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true; }
-		} );
-		root.name = 'lung';
-		root.scale.set(0.03, 0.03, 0.03);
-		root.position.set(30, 15.0, 25);
-		scene.add(root);
-	});
+	// // Load Mesh - Lung
+	// gltfLoader.load('../resources/Models/glTF/lung_model/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true; }
+	// 	} );
+	// 	root.name = 'lung';
+	// 	root.scale.set(0.03, 0.03, 0.03);
+	// 	root.position.set(30, 15.0, 25);
+	// 	scene.add(root);
+	// });
 
-	// Load Mesh - Pelvic
-	gltfLoader.load('../resources/Models/glTF/pelvic/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true; }
-		} );
-		root.name = 'pelvic';
-		root.scale.set(0.15, 0.15, 0.15);
-		root.position.set(25, -1.5, -40);
-		scene.add(root);
-	});
+	// // Load Mesh - Pelvic
+	// gltfLoader.load('../resources/Models/glTF/pelvic/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true; }
+	// 	} );
+	// 	root.name = 'pelvic';
+	// 	root.scale.set(0.15, 0.15, 0.15);
+	// 	root.position.set(25, -1.5, -40);
+	// 	scene.add(root);
+	// });
 
 	// Load Mesh - Stomach
-	gltfLoader.load('../resources/Models/glTF/stomach/scene.gltf', function (mesh) {
-		let root = mesh.scene;
-		root.traverse(function (node) {
-			if (node.isMesh) { node.castShadow = true; }
-		});
-		root.name = 'stomach';
-		root.scale.set(30, 30, 30);
-		root.position.set(10, 10, 14);
-		scene.add(root);
-	});
+	// gltfLoader.load('../resources/Models/glTF/stomach/scene.gltf', function (mesh) {
+	// 	let root = mesh.scene;
+	// 	root.traverse(function (node) {
+	// 		if (node.isMesh) { node.castShadow = true; }
+	// 	});
+	// 	root.name = 'stomach';
+	// 	root.scale.set(30, 30, 30);
+	// 	root.position.set(10, 10, 14);
+	// 	scene.add(root);
+	// });
 
-	// Load Mesh - painting 1 
-	gltfLoader.load('../resources/Models/glTF/monalisa/scene.gltf', function (mesh) {
-			let root = mesh.scene;
-			root.name = 'monalisa';
-			root.scale.set(1.05, 1.05, 1.05);
-			root.position.set(-14, 11.1, -48);
-			scene.add(root);
-	});
+	// // Load Mesh - painting 1 
+	// gltfLoader.load('../resources/Models/glTF/monalisa/scene.gltf', function (mesh) {
+	// 		let root = mesh.scene;
+	// 		root.name = 'monalisa';
+	// 		root.scale.set(1.05, 1.05, 1.05);
+	// 		root.position.set(-14, 11.1, -48);
+	// 		scene.add(root);
+	// });
 
-	//Load Mesh cabinet
-	gltfLoader.load('../resources/Models/glTF/cabinet/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) {  }
-		} );
-		root.name = 'cabinet';
-		root.scale.set(0.08, 0.08, 0.08);
-		root.position.set(-6, 0, -36);
-		scene.add(root);
-	});
+	// //Load Mesh cabinet
+	// gltfLoader.load('../resources/Models/glTF/cabinet/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) {  }
+	// 	} );
+	// 	root.name = 'cabinet';
+	// 	root.scale.set(0.08, 0.08, 0.08);
+	// 	root.position.set(-6, 0, -36);
+	// 	scene.add(root);
+	// });
 
-	//Load chandelier
-	gltfLoader.load('../resources/Models/glTF/chandelier/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = false }
-		} );
-		root.name = 'chandelier';
-		root.scale.set(0.007, 0.007, 0.007);
-		root.position.set(0, 15, 0);
-		scene.add(root);
-	});
+	// //Load chandelier
+	// gltfLoader.load('../resources/Models/glTF/chandelier/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = false }
+	// 	} );
+	// 	root.name = 'chandelier';
+	// 	root.scale.set(0.007, 0.007, 0.007);
+	// 	root.position.set(0, 15, 0);
+	// 	scene.add(root);
+	// });
 
-	// Load Mesh - painting 2 
-	gltfLoader.load('../resources/Models/glTF/old_painting/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = false }
-		} );
-		root.name = 'painting2';
-		root.scale.set(12, 12, 12);		
-		root.position.set(-3, 6.0, 39);
-		root.rotateY(Math.PI);
-		scene.add(root);
-	});
+	// // Load Mesh - painting 2 
+	// gltfLoader.load('../resources/Models/glTF/old_painting/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = false }
+	// 	} );
+	// 	root.name = 'painting2';
+	// 	root.scale.set(12, 12, 12);		
+	// 	root.position.set(-3, 6.0, 39);
+	// 	root.rotateY(Math.PI);
+	// 	scene.add(root);
+	// });
 
 	// Load Mesh - camera security 1 
-	gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = false }
-		} );
-		root.name = 'camera1';
-		root.scale.set(0.4, 0.4, 0.4);
-		root.position.set(-36, 17.2, -7.0);
-		scene.add(root);
-	});
+	// gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = false }
+	// 	} );
+	// 	root.name = 'camera1';
+	// 	root.scale.set(0.4, 0.4, 0.4);
+	// 	root.position.set(-36, 17.2, -7.0);
+	// 	scene.add(root);
+	// });
 
-	// Load Mesh - camera security 2
-	gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = false }
-		} );
-		root.name = 'camera2';
-		root.scale.set(0.4, 0.4, 0.4);
-		root.position.set(-36, 17.2, 13.0);
-		scene.add(root);
-	});
+	// // Load Mesh - camera security 2
+	// gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = false }
+	// 	} );
+	// 	root.name = 'camera2';
+	// 	root.scale.set(0.4, 0.4, 0.4);
+	// 	root.position.set(-36, 17.2, 13.0);
+	// 	scene.add(root);
+	// });
 
-	// Load Mesh - camera security 3
-	gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = false }
-		} );
-		root.name = 'camera3';
-		root.scale.set(0.4, 0.4, 0.4);
-		root.position.set(-25, 17.2, -46.0);
-		scene.add(root);
-	});
+	// // Load Mesh - camera security 3
+	// gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = false }
+	// 	} );
+	// 	root.name = 'camera3';
+	// 	root.scale.set(0.4, 0.4, 0.4);
+	// 	root.position.set(-25, 17.2, -46.0);
+	// 	scene.add(root);
+	// });
 
-	// Load Mesh - camera security 4
-	gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = false }
-		} );
-		root.name = 'camera4';
-		root.scale.set(0.4, 0.4, 0.4);
-		root.position.set(27, 17.2, -14.0);
-		root.rotateY(Math.PI);
-		scene.add(root);
-	});
+	// // Load Mesh - camera security 4
+	// gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = false }
+	// 	} );
+	// 	root.name = 'camera4';
+	// 	root.scale.set(0.4, 0.4, 0.4);
+	// 	root.position.set(27, 17.2, -14.0);
+	// 	root.rotateY(Math.PI);
+	// 	scene.add(root);
+	// });
 
 	// Load Mesh - camera security 5
-	gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = false }
-		} );
-		root.name = 'camera5';
-		root.scale.set(0.4, 0.4, 0.4);		
-		root.position.set(27, 17.2, 36.0);
-		root.rotateY(Math.PI);
-		scene.add(root);
-	});
+	// gltfLoader.load('../resources/Models/glTF/security_camera/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = false }
+	// 	} );
+	// 	root.name = 'camera5';
+	// 	root.scale.set(0.4, 0.4, 0.4);		
+	// 	root.position.set(27, 17.2, 36.0);
+	// 	root.rotateY(Math.PI);
+	// 	scene.add(root);
+	// });
 
 	//// Load Mesh - Table
-	gltfLoader.load('../resources/Models/glTF/table/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true }
-		} );
-		root.name = 'table';
-		root.scale.set(0.07, 0.07, 0.07);		
-		root.position.set(-37, 4.1, -18);
-		root.rotateY(Math.PI/2);
-		scene.add(root);
-	});
+	// gltfLoader.load('../resources/Models/glTF/table/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true }
+	// 	} );
+	// 	root.name = 'table';
+	// 	root.scale.set(0.07, 0.07, 0.07);		
+	// 	root.position.set(-37, 4.1, -18);
+	// 	root.rotateY(Math.PI/2);
+	// 	scene.add(root);
+	// });
 
 	// Load Mesh - Lamp in Table
-	gltfLoader.load('../resources/Models/glTF/office_lamp/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true }
-		} );
-		root.name = 'lampTable';
-		root.scale.set(0.07, 0.07, 0.07);		
-		root.position.set(-38, 6.8, -18);
-		root.rotateY(Math.PI/3);
-		scene.add(root);
-	});
+	// gltfLoader.load('../resources/Models/glTF/office_lamp/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true }
+	// 	} );
+	// 	root.name = 'lampTable';
+	// 	root.scale.set(0.07, 0.07, 0.07);		
+	// 	root.position.set(-38, 6.8, -18);
+	// 	root.rotateY(Math.PI/3);
+	// 	scene.add(root);
+	// });
 
-	// Load Mesh - book
-	gltfLoader.load('../resources/Models/glTF/open_book/scene.gltf', function(mesh){
-		let root = mesh.scene;
-		root.traverse( function( node ) {
-			if ( node.isMesh ) { node.castShadow = true }
-		} );
-		root.name = 'openBook';
-		root.scale.set(0.03, 0.03, 0.03);		
-		root.position.set(-37, 8.8, -21);
-		scene.add(root);
-	});
+	// // Load Mesh - book
+	// gltfLoader.load('../resources/Models/glTF/open_book/scene.gltf', function(mesh){
+	// 	let root = mesh.scene;
+	// 	root.traverse( function( node ) {
+	// 		if ( node.isMesh ) { node.castShadow = true }
+	// 	} );
+	// 	root.name = 'openBook';
+	// 	root.scale.set(0.03, 0.03, 0.03);		
+	// 	root.position.set(-37, 8.8, -21);
+	// 	scene.add(root);
+	// });
 
 	// Load Mesh - pen holder
 	gltfLoader.load('../resources/Models/glTF/pen_holder/scene.gltf', function(mesh){
@@ -841,7 +842,7 @@ function loadObjects() {
 			if ( node.isMesh ) { node.castShadow = true }
 		} );
 		root.name = 'pen';
-		root.scale.set(0.83, 0.83, 0.83);		
+		root.scale.set(0.00083, 0.00083, 0.00083);		
 		root.position.set(-37, 7.5, -15);
 		scene.add(root);
 	});
