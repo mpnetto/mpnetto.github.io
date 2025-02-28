@@ -99,3 +99,52 @@ footer {
 section {
     animation: fadeIn 0.8s ease-in-out;
 }
+
+
+/* Hero Section - Split Layout */
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #623CEA 50%, #D6FF79 50%);
+    color: white;
+    padding: 60px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #D6FF79;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #F1F1F1;
+}
+
+.hero-details {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #E2E8F0;
+}
+
+.hero-image {
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
